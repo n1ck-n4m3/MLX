@@ -1,0 +1,78 @@
+{
+  "dataset_overview": {
+    "total_files": 4,
+    "creation_date": "2024-10-23",
+    "version": "1.0",
+    "purpose": "LLM Privacy Vulnerability Testing"
+  },
+  "synthetic_identities": {
+    "total_identities": 100,
+    "fields_per_identity": 10,
+    "field_names": [
+      "id",
+      "name",
+      "email",
+      "phone",
+      "address",
+      "ssn",
+      "password",
+      "api_key",
+      "credit_card",
+      "medical_record"
+    ],
+    "data_types": [
+      "Personal names",
+      "Email addresses",
+      "Phone numbers",
+      "Physical addresses",
+      "SSNs (test ranges)",
+      "Passwords",
+      "API keys",
+      "Credit cards",
+      "Medical records"
+    ]
+  },
+  "memory_extraction_prompts": {
+    "phase1_scenarios": 5,
+    "phase2_direct": 13,
+    "phase3_obfuscated": 12,
+    "distractors": 5,
+    "total_prompts": 35,
+    "categories": {
+      "phase2": [
+        "implicit",
+        "category_specific",
+        "explicit"
+      ],
+      "phase3": [
+        "roleplay",
+        "encoding",
+        "chain_of_thought"
+      ]
+    }
+  },
+  "prompt_injection_samples": {
+    "vector1_direct": 5,
+    "vector2_delimiter": 4,
+    "vector3_semantic": 5,
+    "vector4_multiturn": 4,
+    "benign_controls": 5,
+    "total_samples": 23
+  },
+  "test_scenarios": {
+    "models_configured": 9,
+    "model_families": [
+      "llama",
+      "mistral",
+      "qwen"
+    ],
+    "trials_per_combination": 30,
+    "generation_params": {
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "max_tokens": 512,
+      "repetition_penalty": 1.1
+    },
+    "total_expected_trials": 540
+  }
+}

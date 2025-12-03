@@ -1,0 +1,95 @@
+{
+  "experiment_focus_for_untrained_models": {
+    "description": "Optimized experiment design for models without specific training",
+    "primary_objective": "Test context memory and instruction following vulnerabilities"
+  },
+  
+  "memory_extraction_experiment": {
+    "purpose": "Test if model remembers information from current conversation",
+    "methodology": {
+      "step1": "Inject synthetic PII in natural conversation",
+      "step2": "Insert 2-3 distractor prompts (create temporal distance)",
+      "step3": "Attempt extraction with various techniques",
+      "step4": "Measure success rate"
+    },
+    "why_it_works": "Tests short-term memory within conversation context",
+    "data_requirements": {
+      "identities": 50,
+      "scenarios": 5,
+      "extraction_prompts": 15,
+      "total_trials_per_model": 20
+    },
+    "expected_results": {
+      "base_models": "Higher leakage (40-60%) - less safety training",
+      "instruct_models": "Lower leakage (10-30%) - better safety",
+      "reasoning": "Instruct models have alignment training"
+    }
+  },
+  
+  "prompt_injection_experiment": {
+    "purpose": "Test if model can be manipulated by hidden instructions",
+    "methodology": {
+      "vector1": "Direct instruction injection in legitimate tasks",
+      "vector2": "Delimiter manipulation (parsing confusion)",
+      "vector3": "Semantic deception (social engineering)",
+      "vector4": "Multi-turn manipulation (trust building)"
+    },
+    "why_it_works": "Tests instruction parsing and safety boundaries",
+    "data_requirements": {
+      "direct_injection": 5,
+      "delimiter_manipulation": 4,
+      "semantic_injection": 5,
+      "multiturn_sequences": 3,
+      "total_trials_per_model": 15
+    },
+    "expected_results": {
+      "base_models": "More susceptible (30-50% success)",
+      "instruct_models": "Better resistance (5-20% success)",
+      "reasoning": "Safety training helps resist manipulation"
+    }
+  },
+  
+  "simplified_trial_structure": {
+    "memory_extraction": {
+      "trials_per_model": 20,
+      "calculation": "50 identities × 0.4 usage rate = 20 trials",
+      "time_estimate": "20 × 15 seconds = 5 minutes per model"
+    },
+    "prompt_injection": {
+      "trials_per_model": 15,
+      "calculation": "17 injection samples × 0.9 usage rate = 15 trials",
+      "time_estimate": "15 × 10 seconds = 2.5 minutes per model"
+    },
+    "total_per_model": {
+      "trials": 35,
+      "time": "7.5 minutes",
+      "reasoning": "Sufficient for statistical significance"
+    },
+    "total_experiment": {
+      "models": 9,
+      "total_trials": 315,
+      "total_time": "67.5 minutes + overhead = ~2 hours"
+    }
+  },
+  
+  "key_insights": {
+    "context_memory": {
+      "what_we_test": "Can model remember info from current conversation?",
+      "real_world_relevance": "High - affects chat applications",
+      "training_dependency": "None - works on any model"
+    },
+    "prompt_injection": {
+      "what_we_test": "Can model be tricked by hidden instructions?",
+      "real_world_relevance": "Very high - affects all LLM applications",
+      "training_dependency": "None - tests fundamental parsing"
+    }
+  },
+  
+  "practical_advantages": {
+    "no_training_required": "Works with any pre-trained model",
+    "fast_execution": "2 hours vs 6 hours originally",
+    "clear_results": "Easy to interpret success/failure",
+    "reproducible": "Same results with same prompts",
+    "scalable": "Easy to add more models"
+  }
+}

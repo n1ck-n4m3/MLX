@@ -69,3 +69,22 @@ logs/
 # Temporary files
 *.tmp
 *.temp
+
+# Paper and presentation files (not for GitHub)
+Privacy_Group_Project_Paper__from_IEEE_template_/
+presentation.pptx
+Proposal.pdf
+*.pdf
+*.pptx
+
+# Assignment submission folder
+assignment_3_submission/
+
+# Old/temporary result files
+DESCRIPTION.md
+EXPERIMENT_SUMMARY.md
+proposed_method.txt
+references_added.txt
+
+# Model directories (keep only config, not weights)
+models/

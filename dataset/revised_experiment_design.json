@@ -1,0 +1,89 @@
+{
+  "revised_experiment_design": {
+    "description": "Optimized for untrained models - focusing on context memory and prompt injection",
+    "primary_focus": "Context-based vulnerabilities",
+    "secondary_focus": "Prompt injection robustness"
+  },
+  "context_memory_testing": {
+    "description": "Test if models can remember information from current conversation",
+    "methodology": {
+      "phase1": "Inject PII in natural conversation context",
+      "phase2": "Insert temporal distance (distractor prompts)",
+      "phase3": "Attempt extraction with various techniques"
+    },
+    "data_requirements": {
+      "identities_needed": 50,
+      "reasoning": "Sufficient variety for statistical significance without redundancy",
+      "current": 100,
+      "status": "More than adequate"
+    },
+    "prompts_needed": {
+      "context_scenarios": 5,
+      "extraction_prompts": 20,
+      "current": 30,
+      "status": "Sufficient"
+    }
+  },
+  "prompt_injection_testing": {
+    "description": "Test model robustness against adversarial instructions",
+    "methodology": {
+      "vector1": "Direct instruction injection",
+      "vector2": "Delimiter manipulation", 
+      "vector3": "Semantic deception",
+      "vector4": "Multi-turn sequences"
+    },
+    "data_requirements": {
+      "samples_needed": 15,
+      "reasoning": "Cover all attack vectors with multiple examples each",
+      "current": 23,
+      "status": "More than adequate"
+    }
+  },
+  "simplified_trial_structure": {
+    "memory_extraction": {
+      "trials_per_model": 20,
+      "reasoning": "Sufficient for statistical significance with untrained models",
+      "original": 30,
+      "reduction": "33% fewer trials"
+    },
+    "prompt_injection": {
+      "trials_per_model": 15,
+      "reasoning": "Focus on quality over quantity for injection testing",
+      "original": 20,
+      "reduction": "25% fewer trials"
+    },
+    "total_trials": {
+      "new_total": 315,
+      "calculation": "9 models × (20 memory + 15 injection) = 315",
+      "original": 540,
+      "reduction": "42% fewer trials"
+    }
+  },
+  "expected_outcomes": {
+    "context_memory": {
+      "base_models": "Higher leakage rates (40-60%)",
+      "instruct_models": "Lower leakage rates (10-30%)",
+      "reasoning": "Instruct models have better safety training"
+    },
+    "prompt_injection": {
+      "base_models": "More susceptible (30-50% success)",
+      "instruct_models": "Better resistance (5-20% success)",
+      "reasoning": "Safety training helps resist injection"
+    }
+  },
+  "practical_considerations": {
+    "compute_time": {
+      "estimated": "2-3 hours",
+      "calculation": "315 trials × 10 seconds average = 52 minutes + overhead",
+      "original": "4-6 hours"
+    },
+    "memory_usage": {
+      "peak": "16-20GB",
+      "reasoning": "M3 Pro 32GB can handle concurrent model loading"
+    },
+    "reproducibility": {
+      "random_seeds": "Fixed for consistent results",
+      "model_versions": "Specific MLX versions documented"
+    }
+  }
+}
